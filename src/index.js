@@ -26,8 +26,7 @@ const store = createStore(rootReducer,composeEnhancers(
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-  
+    <BrowserRouter basename='todoListV2_React_withAuth'>
       <App />
     </BrowserRouter>
   </Provider>,

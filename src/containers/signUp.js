@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classesBtn from '../../src/button.css';
 import classes from './auth.css';
-
+import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as action from '../store/actions/index';
 
@@ -107,8 +107,8 @@ checkValidity(value,type) {
                 <button className={classesBtn.signInsignUp} onClick={this.nowSignUp} disabled={buttonDisable}>
                 SignUp</button>
                 <br/>
-                <a href='/' disabled={buttonDisable}>
-                ←← Already have an acount?</a>
+                <NavLink to={{pathname: '/SignIn'}}  disabled={buttonDisable}>
+                ←← Already have an acount?</NavLink>
 
             </div>
         )
