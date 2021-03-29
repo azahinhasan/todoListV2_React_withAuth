@@ -9,7 +9,7 @@ import data from './store/reducers/data';
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter,HashRouter} from 'react-router-dom';
 
 
 
@@ -26,9 +26,9 @@ const store = createStore(rootReducer,composeEnhancers(
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename='todoListV2_React_withAuth'>
+    <HashRouter >
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById('root')
 );
