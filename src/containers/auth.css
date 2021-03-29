@@ -1,0 +1,50 @@
+input{
+    margin: 20px 20px 20px 20px;
+    border: 2px black;
+    padding: 10px;
+    border-bottom-style: solid;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    outline: none;
+}
+
+.SignInTextBox{
+    display: block;
+    margin: 40px;
+}
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    margin: 30px;
+  }
+  
+  a:hover, a:active {
+    background-color: black;
+    color: white;
+  }
+
+  .Arrow{
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+.error{
+    color: red;
+    margin: 15px;
+  }
+
+  .logOut{
+      
+  }

@@ -1,0 +1,29 @@
+
+
+table{
+    margin-left: auto; 
+    margin-right: auto;
+    font-size: 15px;
+    
+    font-weight: bold;
+    border-spacing: 15px;
+    position: relative;
+    left: 35px;
+}
+td{
+    width: 220px;
+    text-align: left;
+
+   
+}
+
+.dataNotDone{
+    border: 1px;
+    border-bottom-style: solid;
+}
+
+.dataDone{
+    border: 1px;
+    border-bottom-style: solid;
+    text-decoration: line-through;
+}

@@ -1,0 +1,72 @@
+
+body{
+  color: black;
+}
+
+.App {
+  border: 3px solid black;
+  margin: 5px 1px;
+  position: relative;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+
+  
+}
+
+
+
+.chngeMoodDark {
+  background-color: rgb(41, 40, 40);
+  color: white;
+}
+
+.chngeMoodLight {
+  background-color: white;
+}
+
+
+
+
+@media print {
+  .noPrint{
+    display:none;
+  }
+}
+
+.table {
+  border: 1px;
+  margin-left: auto; 
+  margin-right: auto;
+  position: relative;
+  top:20px;
+
+}
+
+h1{
+  text-align: center;
+  text-decoration: underline overline;
+
+}
+
+span{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+
+@media (max-width: 600px) {
+  .chngeMoodDark {
+    background-color: rgb(41, 40, 40);
+    width: max-content;
+    color: white;
+  }
+  .PSnote{
+    text-decoration: none; 
+  }
+
+}
