@@ -5,7 +5,8 @@ const initialState={
     signedIn:false,
     error:'',
     userId:'',
-    name:''
+    name:'',
+    loading:false
 }
 const reducer = ( state = initialState, action ) => {
 
@@ -29,6 +30,16 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 signedIn:false
+            };
+        case actionTypes.LODING_START: 
+            return {
+                ...state,
+                loading:true
+            };
+        case actionTypes.LODING_STOP: 
+            return {
+                ...state,
+                loading:false
             };
 
         default:

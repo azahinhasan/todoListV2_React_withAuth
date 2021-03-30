@@ -11,6 +11,7 @@ import Aux from '../hoc/auxx';
 import { connect } from 'react-redux';
 import * as action from '../store/actions/index';
 import classesBtn from '../../src/button.css';
+import Spinner from '../ui/Spinner';
 
 let a = false;
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
     //   id:'',
     todos:[],
     darkMood:false,
+    loading:false
     //   inprogress:''
     // },
     // todos:[ {id: "fafdafa",todo:"hello",inprogress: true},
@@ -33,6 +35,7 @@ class App extends Component {
   
   componentDidMount(){
    //console.log("[App.js] componentDidMount");
+    this.setState({loading: true})
     this.getTodo();
   }
   componentDidUpdate(){
@@ -69,6 +72,7 @@ addTodo =(e) => {
 
 
   getTodo= () =>{
+    
     db.collection("todoList").where("userId", "==", this.props.userId).limit(100).get().then(snapshot => {
       //db.collection("todoList").get().then(snapshot => {
       const list =[];
@@ -85,6 +89,7 @@ addTodo =(e) => {
           timestmp:time
         }
         list.push(data);
+
       })
       
 
@@ -92,7 +97,7 @@ addTodo =(e) => {
     let todoData=this.shortData(list);
     this.setState({todos : todoData})
 
-
+    this.setState({loading: false})
     if(this.state.getTodoCallAgain){
       console.log("Added::")
       this.setState({getTodoCallAgain : false})
@@ -143,7 +148,10 @@ addTodo =(e) => {
     
     let pageData = null;
 
-    if(this.state.todos){
+    if(this.state.loading){
+      pageData = <Spinner/>
+    }
+    else if(this.state.todos && !this.state.loading){
       
       pageData = (
         <div>
@@ -170,11 +178,9 @@ addTodo =(e) => {
     return(
 
       <div>
-         <button className={classesBtn.button,classesBtn.Logout} onClick={this.props.logOut}>LogOut</button>
-
+        <button className={classesBtn.button,classesBtn.Logout} onClick={this.props.logOut}>LogOut</button>
         {pageData}
-        <p>Remove and Done All</p>
-       
+        {/* <Spinner/> */}
       </div>
     
     )

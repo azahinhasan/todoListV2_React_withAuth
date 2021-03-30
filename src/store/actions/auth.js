@@ -22,6 +22,19 @@ export const authFailed = (error) => {
     };
 };
 
+export const LoadingStart = () => {
+    return {
+        type: actionTypes.LODING_START,
+        loding: true,
+    };
+};
+export const LoadingStop = () => {
+    return {
+        type: actionTypes.LODING_STOP,
+        loding: false,
+    };
+};
+
 export const SignIn=(email,password)=>{
     return (dispatch)=>{
 
@@ -144,9 +157,11 @@ export const SignUp=(email,password,name)=>{
 
 export const logInWithGoogle =() => {
 
+    
     var provider = new firebase.auth.GoogleAuthProvider();
-
-    return dispatch =>firebase.auth().signInWithPopup(provider).then((response)=>{
+    //(LoadingStart());
+    return (dispatch) =>     
+            firebase.auth().signInWithPopup(provider).then((response)=>{
             console.log(response.user.ja.X);
             console.log(response)
             localStorage.setItem('token',response.credential.idToken);
@@ -154,9 +169,12 @@ export const logInWithGoogle =() => {
             localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
             dispatch(storeDataInDB(response.additionalUserInfo.profile.name,response.user.ja.X));
             dispatch(authSuccess());
+           // dispatch(LoadingStop());
+
 
         }).catch((err)=>{
-            console.log(err)
+            console.log(err.message)
+           dispatch(authFailed(err.message));
         })
     
 }
@@ -173,7 +191,8 @@ export const logInWithFacebook =() => {
             dispatch(storeDataInDB(response.additionalUserInfo.profile.name,response.user.ja.X));
             dispatch(authSuccess());
         }).catch((err)=>{
-            console.log(err)
+            console.log(err);
+            dispatch(authFailed(err.message));
         })
     
 }
