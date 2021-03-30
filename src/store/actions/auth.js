@@ -50,14 +50,66 @@ export const SignIn=(email,password)=>{
 }
 
 
+let checkUserAvailable= (userID) =>{
+    let count = 0;
+
+
+
+    // setTimeout(() => {
+         db.collection("userInfo").where("UserID", "==", userID).get().then(snapshot => {
+            count=snapshot.size;
+            console.log('coutReturn ',count);
+
+            // if(count <= 0){
+
+            //     db.collection("userInfo").add({
+            //         Name: name,
+            //         UserID:userID,
+            //         SignUpDate:new Date()
+            //     });
+            // }
+            // snapshot.forEach(doc => {
+            //     count=1;
+            //     console.log('cout ',count);
+            //     return count;
+            // })
+        })
+        // console.log('coutReturn ',count);
+        // return count;
+        
+    //  }, 2000);
+
+    
+
+
+    //return count == 0;
+    
+}
+
+
+
 export const storeDataInDB=(name,userID)=>{
-    return (dispatch)=>{
-        db.collection("userInfo").add({
-            Name: name,
-            UserID:userID,
-            SignUpDate:new Date()
-        });
-    }
+
+        return (dispatch)=>{
+            let count = 0;
+
+
+            db.collection("userInfo").where("UserID", "==", userID).get().then(snapshot => {
+                count=snapshot.size;
+                console.log('coutReturn ',count);
+    
+                if(count <= 0){
+                    console.log("{adding..}")
+                    db.collection("userInfo").add({
+                        Name: name,
+                        UserID:userID,
+                        SignUpDate:new Date()
+                    });
+                }
+            })
+        }
+
+
 }
 
 
@@ -80,8 +132,6 @@ export const SignUp=(email,password,name)=>{
             dispatch(storeDataInDB(name,response.data.localId));
 
             dispatch(SignIn(email,password));
-          
-
         }).catch(err=>{
             dispatch(authFailed(err.response.data.error.message));
         })
@@ -102,14 +152,16 @@ export const logInWithGoogle =() => {
             localStorage.setItem('token',response.credential.idToken);
             localStorage.setItem('userId',response.user.ja.X);
             localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
+            dispatch(storeDataInDB(response.additionalUserInfo.profile.name,response.user.ja.X));
             dispatch(authSuccess());
+
         }).catch((err)=>{
             console.log(err)
         })
     
-  }
+}
 
- export const logInWithFacebook =() => {
+export const logInWithFacebook =() => {
 
     var provider = new firebase.auth.FacebookAuthProvider();
 
@@ -118,12 +170,13 @@ export const logInWithGoogle =() => {
             localStorage.setItem('accessToken',response.credential.accessToken);
             localStorage.setItem('userId',response.user.ja.X);
             localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
+            dispatch(storeDataInDB(response.additionalUserInfo.profile.name,response.user.ja.X));
             dispatch(authSuccess());
         }).catch((err)=>{
             console.log(err)
         })
     
-  }
+}
 
 
 export const logOut=()=>{
