@@ -155,6 +155,10 @@ addTodo =(e) => {
       
       pageData = (
         <div>
+          <div className={classes.userName}>
+            Hi,{this.props.name.split(' ')[0]}
+          </div>
+          
           <h1>ToDo List</h1>
           <TodoInput
           key={4}
@@ -192,7 +196,7 @@ const mapStateToProps=state=>{
   console.log("{App.js ToDo}",state.data.todos)
   return{
     userId:state.auth.userId,
-    name:state.auth.userId,
+    name:state.auth.name,
     signedIn:state.auth.signedIn
   }
 
