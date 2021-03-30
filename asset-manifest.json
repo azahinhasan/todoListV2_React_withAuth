@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/todoListV2_React_withAuth/static/css/main.ce66ae7c.chunk.css",
-    "main.js": "/todoListV2_React_withAuth/static/js/main.08f2eabb.chunk.js",
-    "main.js.map": "/todoListV2_React_withAuth/static/js/main.08f2eabb.chunk.js.map",
-    "runtime-main.js": "/todoListV2_React_withAuth/static/js/runtime-main.46509724.js",
-    "runtime-main.js.map": "/todoListV2_React_withAuth/static/js/runtime-main.46509724.js.map",
-    "static/js/2.2f551e2e.chunk.js": "/todoListV2_React_withAuth/static/js/2.2f551e2e.chunk.js",
-    "static/js/2.2f551e2e.chunk.js.map": "/todoListV2_React_withAuth/static/js/2.2f551e2e.chunk.js.map",
-    "static/js/3.4e6f3c9b.chunk.js": "/todoListV2_React_withAuth/static/js/3.4e6f3c9b.chunk.js",
-    "static/js/3.4e6f3c9b.chunk.js.map": "/todoListV2_React_withAuth/static/js/3.4e6f3c9b.chunk.js.map",
+    "main.css": "/todoListV2_React_withAuth/static/css/main.c7c8c877.chunk.css",
+    "main.js": "/todoListV2_React_withAuth/static/js/main.49e2bd59.chunk.js",
+    "main.js.map": "/todoListV2_React_withAuth/static/js/main.49e2bd59.chunk.js.map",
+    "runtime-main.js": "/todoListV2_React_withAuth/static/js/runtime-main.7fd31bb3.js",
+    "runtime-main.js.map": "/todoListV2_React_withAuth/static/js/runtime-main.7fd31bb3.js.map",
+    "static/js/2.287f4701.chunk.js": "/todoListV2_React_withAuth/static/js/2.287f4701.chunk.js",
+    "static/js/2.287f4701.chunk.js.map": "/todoListV2_React_withAuth/static/js/2.287f4701.chunk.js.map",
+    "static/js/3.657f6d0c.chunk.js": "/todoListV2_React_withAuth/static/js/3.657f6d0c.chunk.js",
+    "static/js/3.657f6d0c.chunk.js.map": "/todoListV2_React_withAuth/static/js/3.657f6d0c.chunk.js.map",
     "index.html": "/todoListV2_React_withAuth/index.html",
-    "static/css/main.ce66ae7c.chunk.css.map": "/todoListV2_React_withAuth/static/css/main.ce66ae7c.chunk.css.map",
-    "static/js/2.2f551e2e.chunk.js.LICENSE.txt": "/todoListV2_React_withAuth/static/js/2.2f551e2e.chunk.js.LICENSE.txt",
+    "static/css/main.c7c8c877.chunk.css.map": "/todoListV2_React_withAuth/static/css/main.c7c8c877.chunk.css.map",
+    "static/js/2.287f4701.chunk.js.LICENSE.txt": "/todoListV2_React_withAuth/static/js/2.287f4701.chunk.js.LICENSE.txt",
     "static/media/goo.a09a7277.png": "/todoListV2_React_withAuth/static/media/goo.a09a7277.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.46509724.js",
-    "static/js/2.2f551e2e.chunk.js",
-    "static/css/main.ce66ae7c.chunk.css",
-    "static/js/main.08f2eabb.chunk.js"
+    "static/js/runtime-main.7fd31bb3.js",
+    "static/js/2.287f4701.chunk.js",
+    "static/css/main.c7c8c877.chunk.css",
+    "static/js/main.49e2bd59.chunk.js"
   ]
 }
