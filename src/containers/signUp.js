@@ -6,6 +6,9 @@ import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as action from '../store/actions/index';
 
+import fbIcon from '../ui/icon/fb.png';
+import googleIcon from '../ui/icon/goo.png';
+
 class SignUP extends Component{
 
     state={
@@ -112,8 +115,13 @@ checkValidity(value,type) {
                 or
                 <br/>
                 <button className={classesBtn.withGoogle} onClick={this.props.logInWithGoogle}>
-                <img className={classes.googleIcon} src="https://www.iconfinder.com/data/icons/social-media-2210/24/Google-512.png"/>
+                <img className={classes.googleIcon} src={googleIcon}/>
                    &nbsp; &nbsp; &nbsp; SignUp With Google
+                </button>
+                <br/>
+                <button className={classesBtn.withFacebook} onClick={this.props.logInWithFacebook}>
+                <img className={classes.googleIcon} src={fbIcon}/>
+                   &nbsp; &nbsp; &nbsp;  &nbsp; SignUp With Facebook
                 </button>
                 <br/>
                 <NavLink to={{pathname: '/SignIn'}}  disabled={buttonDisable}>
@@ -134,7 +142,9 @@ const npmStateToProps=state=>{
     return{
        
         SignUp:(email,password,name)=> dispatch( 
-            action.SignUp(email,password,name))
+            action.SignUp(email,password,name)),
+        logInWithGoogle:()=>dispatch(action.logInWithGoogle()),
+        logInWithFacebook:()=>dispatch(action.logInWithFacebook())
     }
   }
 

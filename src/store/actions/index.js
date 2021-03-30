@@ -7,5 +7,6 @@ export {
         SignUp,
         authCheckState,
         logOut,
-        logInWithGoogle
+        logInWithGoogle,
+        logInWithFacebook
     } from './auth';

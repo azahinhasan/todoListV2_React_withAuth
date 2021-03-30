@@ -114,9 +114,8 @@ export const logInWithGoogle =() => {
     var provider = new firebase.auth.FacebookAuthProvider();
 
     return dispatch =>firebase.auth().signInWithPopup(provider).then((response)=>{
-            console.log(response.user.ja.X);
             console.log(response)
-            localStorage.setItem('token',response.credential.idToken);
+            localStorage.setItem('accessToken',response.credential.accessToken);
             localStorage.setItem('userId',response.user.ja.X);
             localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
             dispatch(authSuccess());
@@ -132,6 +131,7 @@ export const logOut=()=>{
     localStorage.removeItem('token');
     localStorage.removeItem('displayName');
     localStorage.removeItem('userId');
+    localStorage.removeItem('accessToken');
 
     return{
         type:actionTypes.AUTH_LOGOUT
