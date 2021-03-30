@@ -4,13 +4,13 @@ import { db } from '../../firebase_config';
 import axios from 'axios';
 
 
-
-export const authSuccess = (userId) => {
+export const authSuccess = () => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         signedIn: true,
         userId:localStorage.getItem('userId'),
         name:localStorage.getItem('displayName'),
+        token:localStorage.getItem('token')
     };
 };
 
@@ -40,7 +40,7 @@ export const SignIn=(email,password)=>{
             localStorage.setItem('userId',response.data.localId);
             localStorage.setItem('displayName',response.data.displayName);
 
-            dispatch(authSuccess(response.data.localId));
+            dispatch(authSuccess());
 
         }).catch(err=>{
             dispatch(authFailed(err.response.data.error.message));
@@ -80,6 +80,7 @@ export const SignUp=(email,password,name)=>{
             dispatch(storeDataInDB(name,response.data.localId));
 
             dispatch(SignIn(email,password));
+          
 
         }).catch(err=>{
             dispatch(authFailed(err.response.data.error.message));
@@ -87,6 +88,44 @@ export const SignUp=(email,password,name)=>{
 
     }
 }
+
+
+
+
+export const logInWithGoogle =() => {
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    return dispatch =>firebase.auth().signInWithPopup(provider).then((response)=>{
+            console.log(response.user.ja.X);
+            console.log(response)
+            localStorage.setItem('token',response.credential.idToken);
+            localStorage.setItem('userId',response.user.ja.X);
+            localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
+            dispatch(authSuccess());
+        }).catch((err)=>{
+            console.log(err)
+        })
+    
+  }
+
+ export const logInWithFacebook =() => {
+
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    return dispatch =>firebase.auth().signInWithPopup(provider).then((response)=>{
+            console.log(response.user.ja.X);
+            console.log(response)
+            localStorage.setItem('token',response.credential.idToken);
+            localStorage.setItem('userId',response.user.ja.X);
+            localStorage.setItem('displayName',response.additionalUserInfo.profile.name);
+            dispatch(authSuccess());
+        }).catch((err)=>{
+            console.log(err)
+        })
+    
+  }
+
 
 export const logOut=()=>{
 

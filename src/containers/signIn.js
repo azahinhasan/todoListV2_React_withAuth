@@ -78,8 +78,10 @@ checkValidity(value,type) {
         }
         let error=this.props.error;
         return(
-            <div className={classes.SignInTextBox}>
-                <h1>Sign In Page</h1>
+            <div className={classes.SignInSignUpTextBox}>
+                <h1>ToDo List WebApp</h1>
+                <hr/>
+                <h2>Sign In Page</h2>
                 <input type="email" name="email"  placeholder='Email' onChange={(event)=>this.inputChangedHandler(event,'email')}/>
                 <br/>
                 <input type="password" placeholder='Password' onChange={(event)=>this.inputChangedHandler(event,'pass')}/>
@@ -89,9 +91,18 @@ checkValidity(value,type) {
                 <button className={classesBtn.signInsignUp} onClick={this.nowSignIn} disabled={buttonDisable}>
                 SignIn</button>
                 <br/>
+                or
+                <br/>
+                <button className={classesBtn.withGoogle} onClick={this.props.logInWithGoogle}>
+                <img className={classes.googleIcon} src="https://www.iconfinder.com/data/icons/social-media-2210/24/Google-512.png"/>
+                   &nbsp; &nbsp; &nbsp; SignIn With Google
+                </button>
+                <br/>
+
                 <NavLink to={{pathname: '/SignUp'}}  disabled={buttonDisable}>
                 I donn't have account →→
                 </NavLink>
+                
 
             </div>
         )
@@ -108,7 +119,8 @@ const npmStateToProps=state=>{
     return{
        
         SignIn:(email,password)=> dispatch( 
-            action.SignIn(email,password))
+            action.SignIn(email,password)),
+        logInWithGoogle:()=>dispatch(action.logInWithGoogle())
     }
   }
 

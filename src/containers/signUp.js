@@ -94,8 +94,10 @@ checkValidity(value,type) {
         let error=this.props.error;
 
         return(
-            <div>
-                <h1>Sign Up Page</h1>
+            <div className={classes.SignInSignUpTextBox}>
+                <h1>ToDo List WebApp</h1>
+                <hr/>
+                <h2>Sign Up Page</h2>
                 <input type="text" name="name" placeholder='Name' onChange={(event)=>this.inputChangedHandler(event,'name')} />
                 <br/>
                 <input type="email" name="email" placeholder='Email' onChange={(event)=>this.inputChangedHandler(event,'email')}/>
@@ -106,6 +108,13 @@ checkValidity(value,type) {
                 
                 <button className={classesBtn.signInsignUp} onClick={this.nowSignUp} disabled={buttonDisable}>
                 SignUp</button>
+                <br/>
+                or
+                <br/>
+                <button className={classesBtn.withGoogle} onClick={this.props.logInWithGoogle}>
+                <img className={classes.googleIcon} src="https://www.iconfinder.com/data/icons/social-media-2210/24/Google-512.png"/>
+                   &nbsp; &nbsp; &nbsp; SignUp With Google
+                </button>
                 <br/>
                 <NavLink to={{pathname: '/SignIn'}}  disabled={buttonDisable}>
                 ←← Already have an acount?</NavLink>
