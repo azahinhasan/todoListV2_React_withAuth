@@ -1,22 +1,33 @@
+// import firebase from "firebase/app";
+// import { useState, useEffect} from "react";
+// import TextField from '@material-ui/core/TextField';
+// import TodoInput from './components/todoInput';
+// import TodoList from './components/showToDolist';
+// import Button from '@material-ui/core/Button';
+// import { db} from './firebase_config';
+// import Aux from './hoc/auxx';
+// import { satisfies } from 'semver';
 import React, { Component } from 'react';
-
-import firebase from "firebase/app";
-import './App.css';
-import { useState, useEffect} from "react";
-import TextField from '@material-ui/core/TextField';
-import TodoInput from './components/todoInput';
-import TodoList from './components/showToDolist';
-import Button from '@material-ui/core/Button';
-import { db} from './firebase_config';
-import Aux from './hoc/auxx';
-import classes from './App.css';
-import MainTodo from './components/mainToDo';
-import Login from './containers/signIn';
-import SignUp from './containers/signUp';
 import { connect } from 'react-redux';
 import * as action from './store/actions/index';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
-import { satisfies } from 'semver';
+
+import './App.css';
+import classes from './App.css';
+import asyncComponent from './hoc/asyncComponent';
+
+
+
+const asyncToDos=asyncComponent(()=>{ 
+    return import('./components/mainToDo');
+});
+
+const asyncSingnIn=asyncComponent(()=>{ 
+  return import('./containers/signIn');
+});
+const asyncSignUp=asyncComponent(()=>{ 
+  return import('./containers/signUp');
+});
 
 let a = false;
 class App extends Component {
@@ -47,7 +58,7 @@ class App extends Component {
       if(this.props.signedIn){
         page=(
               <Switch>
-                <Route path="/ToDos"  component={MainTodo}/> 
+                <Route path="/ToDos"  component={asyncToDos}/> 
                 <Redirect to="/ToDos" />
               </Switch>
         )
@@ -55,8 +66,8 @@ class App extends Component {
       else{
         page=(
           <Switch>
-            <Route path="/SignUp"  component={SignUp}/> 
-            <Route path="/SignIn" exact component={Login}/> 
+            <Route path="/SignUp"  component={asyncSignUp}/> 
+            <Route path="/SignIn" exact component={asyncSingnIn}/> 
             <Redirect to="/SignIn" />
           </Switch>
     )
@@ -73,9 +84,7 @@ class App extends Component {
 }
 
 const mapStateToProps=state=>{
-  console.log("{App.js ToDo}",state.data.todos)
   return{
-    todos:state.data.todos,
     signedIn:state.auth.signedIn
   }
 
@@ -83,7 +92,6 @@ const mapStateToProps=state=>{
 
 const mapDispatchToProps=dispatch=>{
   return{
-    getTodo:()=> dispatch(action.getTodo()),
     authCheckState:()=>dispatch(action.authCheckState())
   }
 }

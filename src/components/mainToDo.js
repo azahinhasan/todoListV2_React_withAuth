@@ -21,8 +21,6 @@ class App extends Component {
     updatePage:false,
     todoInput:'Enter Your ToDo',
     getTodoCallAgain:false,
-    // tode:{
-    //   id:'',
     todos:[],
     darkMood:false,
     loading:false
@@ -95,7 +93,8 @@ addTodo =(e) => {
 
 
     let todoData=this.shortData(list);
-    this.setState({todos : todoData})
+
+    this.setState({todos :this.shortData(list)});
 
     this.setState({loading: false})
     if(this.state.getTodoCallAgain){
@@ -193,7 +192,6 @@ addTodo =(e) => {
 }
 
 const mapStateToProps=state=>{
-  console.log("{App.js ToDo}",state.data.todos)
   return{
     userId:state.auth.userId,
     name:state.auth.name,
