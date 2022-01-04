@@ -99,9 +99,7 @@ addTodo =(e) => {
     this.setState({loading: false})
     if(this.state.getTodoCallAgain){
       console.log("Added::")
-      this.setState({getTodoCallAgain : false})
-      this.getTodo();   
-      this.getTodo();   
+      this.setState({getTodoCallAgain : false},()=>this.getTodo())
     }
 
     })

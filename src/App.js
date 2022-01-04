@@ -18,7 +18,7 @@ import asyncComponent from './hoc/asyncComponent';
 
 
 
-const asyncToDos=asyncComponent(()=>{ 
+const asyncToDos=asyncComponent(()=>{  //Lazy loding
     return import('./components/mainToDo');
 });
 
